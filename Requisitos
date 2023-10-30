@@ -1,0 +1,15 @@
+Requisitos Básicos:
+
+Iniciar Jogo: O jogador inicia o jogo.
+
+Mover Personagem: O jogador controla o personagem usando as teclas de seta para se mover para cima, baixo, esquerda e direita dentro do labirinto.
+
+Detectar Colisão: O sistema verifica se o personagem colide com obstáculos (paredes, blocos) no labirinto. Quando uma colisão ocorre, o jogador deve ser impedido de atravessar a parede ou obstáculo.
+
+Verificar Vitória: O sistema verifica se o jogador alcançou com sucesso o ponto de destino no labirinto. Se o jogador vencer, uma mensagem de vitória será exibida, juntamente com o tempo gasto para completar o labirinto.
+
+Encerrar Jogo: O jogo é encerrado, e o resultado é exibido na tela (vitória ou derrota).
+
+Gerar Labirinto: Este é um caso de uso que lida com a geração de labirintos aleatórios solucionáveis. Isso é necessário apenas se o requisito de geração aleatória de labirintos for implementado no jogo.
+
+O ator principal é o "Jogador" que interage com o sistema por meio dos casos de uso listados, conforme especificado nos requisitos do jogo.
