@@ -7,11 +7,13 @@ public class Jogador extends Actor
     private GreenfootImage imgEsquerda1;
     private GreenfootImage imgEsquerda2;
     private boolean controleImg;
-    private double passos = 1;
+    private int passos = 1;
     private int cont;
     private boolean venceu = false;
+    private int cont;
 
-public Jogador(){
+
+    public Jogador(){
     double number = 0.75;
     this.imgDireita1 = new GreenfootImage("Coelho01.png");
     this.imgDireita1.scale((int)(this.imgDireita1.getWidth() * number), (int)(this.imgDireita1.getHeight() * number));
@@ -103,22 +105,27 @@ public Jogador(){
         getWorld().addObject(menuVencedor, getWorld().getWidth() / 2, getWorld().getHeight() / 2);
     }
     public void act(){
-            if (Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("d")) {
-                andarDireita();
-            } else if (Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("a")) {
-                andarEsquerda();
-            } else if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w")) {
-                andarCima();
-            } else if (Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("s")) {
-                andarBaixo();
-            }
-            if(isTouching(Objetivo.class) && !venceu){
+        if (Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("d")) {
+            andarDireita();
+        } else if (Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("a")) {
+            andarEsquerda();
+        } else if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w")) {
+            andarCima();
+        } else if (Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("s")) {
+            andarBaixo();
+        }
+        if(isTouching(Objetivo.class) && !venceu){
             venceu = true;
-            Greenfoot.stop(); // Encerra o jogo
-            exibirMenuVencedor(); // Exibe o menu de vencedor
-    }
-    
+            Objetivo objetivo = (Objetivo)getWorld().getObjects(Objetivo.class).get(0);
+            int tempoDecorrido = objetivo.getTimer();
+            Greenfoot.stop();
+            exibirMenuVencedor();
+            Vencedor menuVencedor = new Vencedor();
+            getWorld().addObject(menuVencedor, getWorld().getWidth() / 2, getWorld().getHeight() / 2);
+            getWorld().showText("Tempo: " + tempoDecorrido + " segundos", 120, 40);// Exibe o menu de vencedor
+            getWorld().showText("", 70, 545);  // Remove o texto do temporizador
         }
     }
+}
     
     

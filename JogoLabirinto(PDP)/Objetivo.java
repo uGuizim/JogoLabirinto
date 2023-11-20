@@ -1,40 +1,39 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-
-
-public class Objetivo extends Actor
-{
+public class Objetivo extends Actor {
     private int timer = 0;
-    private int tempoMaximo = 1000000; // Tempo máximo em milissegundos
+    private long startTime = System.currentTimeMillis();
+    private boolean jogoEncerrado = false;
+    int num = 10;
+    int tempoDecorrido;
+    int minutos;
+    int seg;
 
-    public void act()
-    {
-        timer = timer + 1;
-        exibirTimer();
-        
-        if (timer == tempoMaximo) {
-            encerrarJogo();
+    public int getTimer() {
+        long tempoDecorrido = System.currentTimeMillis() - startTime;
+        return (int) tempoDecorrido / 1000;
+    }
+
+    public void act() {
+        if (!jogoEncerrado) {
+            tempoDecorrido = getTimer();
+            // int num = 10;
+            displayTimer(tempoDecorrido);
+            if (tempoDecorrido >= num) {
+                encerrarJogo();
+            }
         }
     }
 
-    // Método para exibir o timer no formato "mm:ss:ms"
-    private void exibirTimer() {
-        int minutos = timer / 6000; 
-        int segundos = (timer % 6000) / 60; 
-
-        String formatoTimer = String.format("%02d:%02d", minutos, segundos);
-        getWorld().showText(formatoTimer, 30, 30);
+    private void displayTimer(int segundos) {
+        minutos = segundos / 60;
+        seg = segundos % 60;
+        String formatoTimer = String.format("%02d:%02d", minutos, seg);
+        getWorld().showText(formatoTimer, 70, 545);
     }
 
-    // Método para configurar o tempo máximo
-    public void setTempoMaximo(int tempoMaximo) {
-        this.tempoMaximo = tempoMaximo;
-    }
-
-    // Método para encerrar o jogo e exibir uma mensagem
     private void encerrarJogo() {
+        jogoEncerrado = true;
         Greenfoot.stop();
         getWorld().showText("Tempo Esgotado!", getWorld().getWidth() / 2, getWorld().getHeight() / 2);
     }
 }
-
