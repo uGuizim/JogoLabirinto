@@ -1,29 +1,30 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  // (World, tempo Actor, GreenfootImage, Greenfoot and MouseInfo)
+
 public class Objetivo extends Actor {
     private int timer = 0;
     private long startTime = System.currentTimeMillis();
     private boolean jogoEncerrado = false;
-    int num = 10;
+    int num = 60;
     int tempoDecorrido;
     int minutos;
     int seg;
-
+    
     public int getTimer() {
         long tempoDecorrido = System.currentTimeMillis() - startTime;
         return (int) tempoDecorrido / 1000;
     }
-
+    
     public void act() {
         if (!jogoEncerrado) {
             tempoDecorrido = getTimer();
-            // int num = 10;
+           // int num = 10;
             displayTimer(tempoDecorrido);
             if (tempoDecorrido >= num) {
                 encerrarJogo();
             }
         }
     }
-
+    
     private void displayTimer(int segundos) {
         minutos = segundos / 60;
         seg = segundos % 60;

@@ -1,7 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class MyWorld extends World
-{
+public class MyWorld extends World {
+    private Greenfoot controle;
+    private Jogador jogador;
+    private Objetivo objetivo;
+
      String [] textMap ={
         "J*******************",
         "..*........*.....*.*",
@@ -20,13 +23,9 @@ public class MyWorld extends World
         "******************.."
     };
     
-private Greenfoot controle;
-private Jogador jogador;
-private Objetivo objetivo;
-
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        // Cria um novo mundo
         super(800, 600, 1); 
         this.controle = new Greenfoot();
         this.jogador = new Jogador();
@@ -36,6 +35,7 @@ private Objetivo objetivo;
 
         
     }
+    
     private void desenhoMapa(){
         for(int i = 0; i < textMap.length;i++){
             String mapLine = textMap[i];
@@ -58,7 +58,8 @@ private Objetivo objetivo;
             }
         }
     }
-     public void act(){
+    
+    public void act(){
             if (this.controle.isKeyDown("right") || this.controle.isKeyDown("d")) {
                 this.jogador.andarDireita();
             } else if (this.controle.isKeyDown("left") || this.controle.isKeyDown("a")) {
