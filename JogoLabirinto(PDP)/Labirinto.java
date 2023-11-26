@@ -1,5 +1,6 @@
 import greenfoot.*;
 
-public class Labirinto extends Actor
+public interface Labirinto  
 {
+  void tipo();
 }
