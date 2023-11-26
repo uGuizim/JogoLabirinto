@@ -1,5 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import greenfoot.*;
 
 public class Jogador extends Actor
 {
@@ -112,13 +111,11 @@ public class Jogador extends Actor
     }
 
     private void exibirMenuVencedor() {
-        // Crie um novo ator para exibir o menu de vencedor
         Vencedor menuVencedor = new Vencedor();
         getWorld().addObject(menuVencedor, getWorld().getWidth() / 2, getWorld().getHeight() / 2);
     }
 
     public void act(){
-        // Armazena a posição anterior do jogador
         xAnterior = getX();
         yAnterior = getY();
 
@@ -145,5 +142,4 @@ public class Jogador extends Actor
            getWorld().showText("", 70, 545);  // Remove o texto do temporizador
         }
     }
-        
-    }
+}

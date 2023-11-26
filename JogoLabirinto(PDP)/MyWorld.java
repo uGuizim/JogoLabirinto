@@ -45,7 +45,7 @@ public class MyWorld extends World {
                         break;
                     case '.':
                         break;
-                    case 'F': // Adiciona LabirintoFalso
+                    case 'F':
                         addObject(new LabirintoFalso(), x, y);
                         break;
                     case 'J':

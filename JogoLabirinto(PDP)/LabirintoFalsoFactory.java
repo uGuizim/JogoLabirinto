@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 public class LabirintoFalsoFactory extends Actor implements LabirintoFactory
 {

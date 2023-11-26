@@ -1,4 +1,4 @@
-import greenfoot.*;  // 
+import greenfoot.*;
 
 public class Objetivo extends Actor {
     private int timer = 0;
@@ -17,7 +17,6 @@ public class Objetivo extends Actor {
     public void act() {
         if (!jogoEncerrado) {
             tempoDecorrido = getTimer();
-            // int num = 10;
             displayTimer(tempoDecorrido);
             if (tempoDecorrido >= num) {
                 encerrarJogo();
@@ -26,7 +25,6 @@ public class Objetivo extends Actor {
     }
 
     private void displayTimer(int segundos) {
-    
         minutos = segundos / 60;
         seg = segundos % 60;
         String formatoTimer = String.format("%02d:%02d", minutos, seg);

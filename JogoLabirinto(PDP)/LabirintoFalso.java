@@ -1,5 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import greenfoot.*;
 public class LabirintoFalso extends Actor implements Labirinto
 {
      public void tipo() {
