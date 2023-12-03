@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=DecoradorSom
+comment1.params=componente
+comment1.target=DecoradorSom(ComponenteSom)
+comment2.params=
+comment2.target=void\ reproduzirSom()
+numComments=3

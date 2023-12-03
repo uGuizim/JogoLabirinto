@@ -10,9 +10,11 @@ public class Jogador extends Actor
     private GreenfootImage imgDireita2;
     private GreenfootImage imgEsquerda1;
     private GreenfootImage imgEsquerda2;
+    private ComponenteSom componenteSom;
     private boolean controleImg;
     private int passos = 1;
     private int cont;
+
     private boolean venceu = false;
 
     public Jogador(){
@@ -28,7 +30,9 @@ public class Jogador extends Actor
 
         this.imgEsquerda2 = new GreenfootImage("Coelho04.png");
         this.imgEsquerda2.scale((int)(this.imgEsquerda2.getWidth() * number), (int)(this.imgEsquerda2.getHeight() * number));
-
+        
+        this.componenteSom = new SomJogador();
+        
         this.setImage(imgDireita1);
         this.controleImg = false;
         this.cont = 0;
@@ -48,6 +52,7 @@ public class Jogador extends Actor
         if(bater() == true){
             setLocation(getX() -5, getY());
         }
+         componenteSom.reproduzirSom();
     }
 
     public void andarEsquerda(){
@@ -56,6 +61,7 @@ public class Jogador extends Actor
         if(bater() == true){
             setLocation(getX()+5, getY());
         }
+         componenteSom.reproduzirSom();
     }
 
     public void andarCima(){
@@ -64,6 +70,7 @@ public class Jogador extends Actor
         if(bater() == true){
             setLocation(getX(), getY()+5);
         }
+         componenteSom.reproduzirSom();
     }
 
     public void andarBaixo(){
@@ -72,6 +79,7 @@ public class Jogador extends Actor
         if(bater() == true){
             setLocation(getX(), getY()-5);
         }
+         componenteSom.reproduzirSom();
     }
 
     public void alteraImgEsquerda(){
@@ -109,10 +117,14 @@ public class Jogador extends Actor
             return false;
         }
     }
-
+     public void setComponenteSom(ComponenteSom componenteSom) {
+        this.componenteSom = componenteSom;
+    }
     private void exibirMenuVencedor() {
         Vencedor menuVencedor = new Vencedor();
         getWorld().addObject(menuVencedor, getWorld().getWidth() / 2, getWorld().getHeight() / 2);
+        componenteSom = new DecoradorSomVitoria(componenteSom);
+        componenteSom.reproduzirSom(); // Adiciona som de vitória
     }
 
     public void act(){
@@ -130,16 +142,16 @@ public class Jogador extends Actor
                 andarBaixo();
             }
         }
-         if(isTouching(Objetivo.class) && !venceu){
+         if (isTouching(Objetivo.class) && !venceu) {
             venceu = true;
             Objetivo objetivo = (Objetivo)getWorld().getObjects(Objetivo.class).get(0);
-            int tempoDecorrido = objetivo.getTimer();
+            int tempoDecorrido = (int) (System.currentTimeMillis() - objetivo.getStartTime()) / 1000;
             Greenfoot.stop();
             exibirMenuVencedor();
             Vencedor menuVencedor = new Vencedor();
             getWorld().addObject(menuVencedor, getWorld().getWidth() / 2, getWorld().getHeight() / 2);
-           getWorld().showText("Tempo: " + tempoDecorrido + " segundos", 120, 40);// Exibe o menu de vencedor
-           getWorld().showText("", 70, 545);  // Remove o texto do temporizador
-        }
+            getWorld().showText("Tempo: " + tempoDecorrido + " segundos", 120, 40); // Exibe o menu de vencedor
+            getWorld().showText("", 70, 545);  // Remove o texto do temporizador
+        }   
     }
 }
