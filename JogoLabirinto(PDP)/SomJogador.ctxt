@@ -1,5 +1,9 @@
 #BlueJ class context
 comment0.target=SomJogador
 comment1.params=
-comment1.target=void\ reproduzirSom()
-numComments=2
+comment1.target=SomJogador()
+comment2.params=
+comment2.target=void\ reproduzirSom()
+comment3.params=
+comment3.target=void\ pararSom()
+numComments=4
