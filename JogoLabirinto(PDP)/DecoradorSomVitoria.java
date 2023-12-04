@@ -7,6 +7,6 @@ public class DecoradorSomVitoria extends DecoradorSom {
 
     public void reproduzirSom() {
         super.reproduzirSom();
-        Greenfoot.playSound("victory-sound.mp3"); // Substitua "som_vitoria.mp3" pelo nome do seu arquivo de som de vitória
+        Greenfoot.playSound("victory-sound.mp3");
     }
 }
